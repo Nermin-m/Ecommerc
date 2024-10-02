@@ -11,7 +11,7 @@ const CategoryFilter: React.FC = () => {
 
     const handleClickCategory = useCallback((path: string) => {
         setSelectedCategory(path); // Set the selected category
-        navigate(`/product${path}`); // Navigate to the category page
+        navigate(`/product${path}`); // Navigate to the category page 1
     }, [navigate]);
 
     return (
