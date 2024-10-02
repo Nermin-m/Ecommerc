@@ -26,7 +26,7 @@ const productSlice = createSlice({
     initialState,
     reducers: {
         updateMobiles: (state, action: PayloadAction<Product[]>) => {
-            state.products.data = action.payload; // Ürün listesini güncelle
+            state.products.data = action.payload;
         },
     }
 });

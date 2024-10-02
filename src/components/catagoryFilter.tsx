@@ -1,17 +1,28 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Button, Stack } from '@mui/material';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { categoryData } from '../data/footer';
 import { Footertype } from '../types/types';
 import Query from "../reactQuery/query.tsx";
 
 const CategoryFilter: React.FC = () => {
     const navigate = useNavigate();
-    const [selectedCategory, setSelectedCategory] = useState<string | null>(null); // State for selected category
+    const { id } = useParams();  // Get the category from the URL
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+    // Automatically set "laptops" as the default category if none is selected
+    useEffect(() => {
+        if (!id) {
+            setSelectedCategory('laptops');
+            navigate('/product/laptops');  // Navigate to the laptops category
+        } else {
+            setSelectedCategory(id);
+        }
+    }, [id, navigate]);
 
     const handleClickCategory = useCallback((path: string) => {
-        setSelectedCategory(path); // Set the selected category
-        navigate(`/product${path}`); // Navigate to the category page 1
+        setSelectedCategory(path);
+        navigate(`/product/${path}`);
     }, [navigate]);
 
     return (
@@ -30,7 +41,7 @@ const CategoryFilter: React.FC = () => {
                 ))}
             </Stack>
 
-            {/* Pass selectedCategory to the Query component */}
+            {/* Pass the selectedCategory to the Query component */}
             <Query category={selectedCategory} />
 
             <Outlet />
