@@ -1,0 +1,94 @@
+
+.main-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+.boxAnimation:hover{
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+}
+.text-container {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+.blogCss {
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    margin-left: 100px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.boxAnimation {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.boxVisible {
+    animation: fadeInUp 0.5s ease-out;
+    opacity: 1;
+}
+.text-container p{
+margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.text-container .MuiButton-root {
+    color: purple;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border:2px solid purple;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.image-container {
+    width:90%;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: moveIn 1s ease-out;
+}
+@keyframes moveIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
